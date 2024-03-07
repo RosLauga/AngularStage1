@@ -1,0 +1,8 @@
+<div class="postCard">
+  <h2>{{post.name}}</h2>
+  <span>{{post.id}}</span>
+  <li *ngFor="let abil of post.abilities">
+  {{abil.ability.name}}
+  </li>
+  <button class="btnShow" (click)="onClickShow()">VIEW {{isShowMore?"MORE":"LESS"}}</button>
+</div>

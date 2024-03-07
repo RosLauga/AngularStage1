@@ -1,0 +1,29 @@
+h2 {
+  margin-bottom: 2px;
+}
+
+.postCard {
+  width: 300px;
+  border: 1px solid black;
+  padding: 0.5rem 1rem;
+  box-shadow: 2px 2px 3px 2px rgba(0, 0, 0, 0.5);
+  border-radius: 5%;
+}
+
+.postCard p {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+}
+
+.showMore {
+  -webkit-line-clamp: 2;
+}
+
+.btnShow {
+  color: white;
+  background-color: rgb(88, 126, 209);
+  border-radius: 5px;
+  cursor: pointer;
+}
