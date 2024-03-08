@@ -3,14 +3,36 @@ import { CommonModule } from '@angular/common';
 import { PostComponent } from './post-component/post-component.component';
 import { PostListComponent } from './post-list/post-list.component';
 import { HttpClientModule } from '@angular/common/http';
-import { PostService } from '../services/post.service';
+import { API_URL, PostService } from '../services/post.service';
+import { PostFormComponent } from './post-form/post-form.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { RouterModule, Routes } from '@angular/router';
 
-export const API_URL = new InjectionToken<string>('API_URL');
+export const postRoutes: Routes = [
+  {
+    path: '**',
+    redirectTo: 'list',
+    pathMatch: 'full',
+  },
+  {
+    path: 'create',
+    component: PostFormComponent,
+  },
+  {
+    path: 'list',
+    component: PostListComponent,
+  },
+];
 
 @NgModule({
-  declarations: [PostComponent, PostListComponent],
-  imports: [CommonModule, HttpClientModule],
-  exports: [PostComponent, PostListComponent],
+  declarations: [PostComponent, PostListComponent, PostFormComponent],
+  imports: [
+    CommonModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+    RouterModule.forChild(postRoutes),
+  ],
+  exports: [PostComponent, PostListComponent, PostFormComponent],
   providers: [
     PostService,
     { provide: API_URL, useValue: 'https://pokeapi.co/api/v2/pokemon/ditto' },

@@ -1,0 +1,10 @@
+<h3>Create a Post</h3>
+<form [formGroup]="addPostForm" (ngSubmit)="handleSubmit()">
+  <input type="text" required formControlName="userpost"/>
+
+  <input type="date" required formControlName="datepost"/>
+  <textarea type="text" required formControlName="contentpost"></textarea>
+<ng-container *ngFor="let errors of errorCheck$ | async">
+<li>{{errors}}</li></ng-container>
+<button type="submit" [disabled]="addPostForm.invalid">Submit</button>
+</form>

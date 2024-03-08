@@ -2,15 +2,33 @@ import { Inject, Injectable, InjectionToken } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { PostData } from '../post-module/post-list/post-list.component';
-import { API_URL } from '../post-module/post-module.module';
+import { PostComponent } from '../post-module/post-component/post-component.component';
+
+export const API_URL = new InjectionToken<string>('API_URL');
 
 @Injectable()
 export class PostService {
-  constructor(
-    @Inject(API_URL) public serviceUrl: string,
-    private http: HttpClient
-  ) {}
+  constructor() {} // private http: HttpClient // @Inject(API_URL) public serviceUrl: string,
+
+  public postList: PostData[] = [
+    {
+      user: 'Rodrigo',
+      date: new Date(),
+      content: 'Unos datos innecesarios',
+    },
+    {
+      user: 'Paulo',
+      date: new Date(),
+      content: 'Unos datos innecesarios sobre Paulo',
+    },
+  ];
+
   public getAllPost() {
-    return this.http.get(this.serviceUrl) as Observable<PostData>;
+    // return this.http.get(this.serviceUrl) as Observable<PostData>;
+    return this.postList;
+  }
+
+  public addPost(data: PostData) {
+    this.postList.push(data);
   }
 }

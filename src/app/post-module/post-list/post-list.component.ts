@@ -3,16 +3,10 @@ import { PostComponent } from '../post-component/post-component.component';
 import { PostService } from '../../services/post.service';
 import { Observable } from 'rxjs';
 
-interface Abilities {
-  ability: {
-    name: string;
-  };
-}
-
 export interface PostData {
-  id?: number;
-  name?: string;
-  abilities?: Abilities[];
+  user?: string;
+  date?: Date;
+  content?: string;
 }
 @Component({
   selector: 'post-list',
@@ -20,7 +14,7 @@ export interface PostData {
   styleUrl: './post-list.component.css',
 })
 export class PostListComponent {
-  public data$: Observable<PostData>;
+  public data$: PostData[];
 
   constructor(private postsList: PostService) {
     this.data$ = this.postsList.getAllPost();

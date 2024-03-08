@@ -1,8 +1,8 @@
 <div>
 <ul>
-<li *ngIf=" data$ | async as post">
+<li *ngFor="let post of data$">
 <post-component [post]="post" ></post-component>
-
 </li>
 </ul>
+<post-form></post-form>
 </div>
