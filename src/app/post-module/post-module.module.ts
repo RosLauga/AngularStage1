@@ -7,10 +7,11 @@ import { API_URL, PostService } from '../services/post.service';
 import { PostFormComponent } from './post-form/post-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
+import { MatButtonModule } from '@angular/material/button';
 
 export const postRoutes: Routes = [
   {
-    path: '**',
+    path: '',
     redirectTo: 'list',
     pathMatch: 'full',
   },
@@ -31,6 +32,7 @@ export const postRoutes: Routes = [
     HttpClientModule,
     ReactiveFormsModule,
     RouterModule.forChild(postRoutes),
+    MatButtonModule,
   ],
   exports: [PostComponent, PostListComponent, PostFormComponent],
   providers: [

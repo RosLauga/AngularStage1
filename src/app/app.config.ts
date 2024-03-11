@@ -1,8 +1,20 @@
 import { ApplicationConfig } from '@angular/core';
 import { provideRouter } from '@angular/router';
 
-import { routes } from './app-routes.module';
+import { PostModule } from './post-module/post-module.module';
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideRouter([])],
+  providers: [
+    provideRouter([
+      {
+        path: 'post',
+        loadChildren: () => PostModule,
+      },
+      {
+        path: '**',
+        redirectTo: 'post',
+        pathMatch: 'full',
+      },
+    ]),
+  ],
 };

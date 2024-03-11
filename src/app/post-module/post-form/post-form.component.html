@@ -6,5 +6,5 @@
   <textarea type="text" required formControlName="contentpost"></textarea>
 <ng-container *ngFor="let errors of errorCheck$ | async">
 <li>{{errors}}</li></ng-container>
-<button type="submit" [disabled]="addPostForm.invalid">Submit</button>
+<button mat-raised-button color='primary' type="submit" [disabled]="addPostForm.invalid">Submit</button>
 </form>

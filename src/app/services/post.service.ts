@@ -19,7 +19,7 @@ export class PostService {
     {
       user: 'Paulo',
       date: new Date(),
-      content: 'Unos datos innecesarios sobre Paulo',
+      content: 'Unos datos innecesarios',
     },
   ];
 
