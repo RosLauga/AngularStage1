@@ -4,6 +4,7 @@ import { PostService } from '../../services/post.service';
 import { Observable, of } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { loadPosts } from '../../state/posts.actions';
+import { getPosts } from '../../state/posts.selectors';
 
 export interface PostData {
   user?: string;
@@ -16,9 +17,10 @@ export interface PostData {
   styleUrl: './post-list.component.css',
 })
 export class PostListComponent {
-  public data$ = of([]);
+  public data$: Observable<PostData[]>;
 
   constructor(private store: Store) {
     this.store.dispatch(loadPosts());
+    this.data$ = this.store.select(getPosts);
   }
 }

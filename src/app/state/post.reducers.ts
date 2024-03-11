@@ -2,12 +2,12 @@ import { Action, createReducer, on } from '@ngrx/store';
 import { PostData } from '../post-module/post-list/post-list.component';
 import { loadPosts, loadPostsSuccessfully } from './posts.actions';
 
-interface State {
+export interface PostDataState {
   posts: PostData[];
   loaded: boolean;
 }
 
-const initialState: State = {
+const initialState: PostDataState = {
   posts: [],
   loaded: false,
 };
@@ -22,6 +22,6 @@ export const postsReducer = createReducer(
   }))
 );
 
-export function reducer(state: State, action: Action) {
+export function reducer(state: PostDataState, action: Action) {
   return postsReducer(state, action);
 }
