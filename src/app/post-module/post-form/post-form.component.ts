@@ -55,7 +55,7 @@ export class PostFormComponent implements OnInit {
     postdata.content = this.addPostForm.get('contentpost')!.value || '';
     postdata.date = new Date(this.addPostForm.get('datepost')!.value || '');
     console.log(postdata);
-    this.postsList.addPost(postdata);
+    // this.postsList.addPost(postdata);
   }
 
   ngOnInit(): void {}

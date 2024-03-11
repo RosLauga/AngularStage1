@@ -1,7 +1,9 @@
 import { Component, Input } from '@angular/core';
 import { PostComponent } from '../post-component/post-component.component';
 import { PostService } from '../../services/post.service';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { loadPosts } from '../../state/posts.actions';
 
 export interface PostData {
   user?: string;
@@ -14,9 +16,9 @@ export interface PostData {
   styleUrl: './post-list.component.css',
 })
 export class PostListComponent {
-  public data$: PostData[];
+  public data$ = of([]);
 
-  constructor(private postsList: PostService) {
-    this.data$ = this.postsList.getAllPost();
+  constructor(private store: Store) {
+    this.store.dispatch(loadPosts());
   }
 }

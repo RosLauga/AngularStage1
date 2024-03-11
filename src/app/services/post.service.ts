@@ -8,27 +8,16 @@ export const API_URL = new InjectionToken<string>('API_URL');
 
 @Injectable()
 export class PostService {
-  constructor() {} // private http: HttpClient // @Inject(API_URL) public serviceUrl: string,
+  constructor(
+    private http: HttpClient,
+    @Inject(API_URL) public serviceUrl: string
+  ) {}
 
-  public postList: PostData[] = [
-    {
-      user: 'Rodrigo',
-      date: new Date(),
-      content: 'Unos datos innecesarios',
-    },
-    {
-      user: 'Paulo',
-      date: new Date(),
-      content: 'Unos datos innecesarios',
-    },
-  ];
-
-  public getAllPost() {
-    // return this.http.get(this.serviceUrl) as Observable<PostData>;
-    return this.postList;
+  public getAllPosts() {
+    return this.http.get(this.serviceUrl) as Observable<PostData[]>;
   }
 
-  public addPost(data: PostData) {
-    this.postList.push(data);
-  }
+  // public addPost(data: PostData) {
+  //   this.postList.push(data);
+  // }
 }

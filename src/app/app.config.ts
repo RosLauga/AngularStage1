@@ -2,6 +2,8 @@ import { ApplicationConfig } from '@angular/core';
 import { provideRouter } from '@angular/router';
 
 import { PostModule } from './post-module/post-module.module';
+import { provideStore } from '@ngrx/store';
+import { provideEffects } from '@ngrx/effects';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -16,5 +18,7 @@ export const appConfig: ApplicationConfig = {
         pathMatch: 'full',
       },
     ]),
+    provideStore(),
+    provideEffects(),
   ],
 };

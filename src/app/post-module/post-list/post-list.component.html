@@ -1,6 +1,6 @@
 <div>
 <ul>
-<li *ngFor="let post of data$">
+<li *ngFor="let post of data$ | async">
 <post-component [post]="post" ></post-component>
 </li>
 </ul>
