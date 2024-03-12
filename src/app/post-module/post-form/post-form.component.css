@@ -1,0 +1,17 @@
+.formPost {
+  display: flex;
+  flex-direction: column;
+  width: 20vw;
+  border: 1px solid black;
+  padding: 0.5rem 1rem;
+  margin: auto;
+}
+
+.listErrors {
+  list-style: none;
+  padding: 0.3rem;
+  background-color: rgba(228, 61, 61, 0.856);
+  color: white;
+  text-align: center;
+  margin: 0.2rem 0;
+}

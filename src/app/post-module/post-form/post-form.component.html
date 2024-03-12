@@ -1,5 +1,5 @@
 <h3>Create a Post</h3>
-<form [formGroup]="addPostForm" (ngSubmit)="handleSubmit()">
+<form class="formPost" [formGroup]="addPostForm" (ngSubmit)="handleSubmit()">
   <mat-form-field appearance="outline">
     <mat-label>User</mat-label>
     <input matInput type="text" required formControlName="userpost" />
@@ -21,7 +21,7 @@
     ></textarea>
   </mat-form-field>
   <ng-container *ngFor="let errors of errorCheck$ | async">
-    <li>{{ errors }}</li></ng-container
+    <li class="listErrors">{{ errors }}</li></ng-container
   >
   <button
     mat-raised-button
