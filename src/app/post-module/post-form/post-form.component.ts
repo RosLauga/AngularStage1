@@ -15,25 +15,15 @@ export class PostFormComponent implements OnInit {
   public addPostForm = new FormGroup({
     userpost: new FormControl('', [Validators.required]),
     datepost: new FormControl('', [Validators.required]),
-    contentpost: new FormControl('', [
-      Validators.required,
-      Validators.minLength(10),
-    ]),
   });
 
   private checkErrors() {
     const errors: string[] = [];
     if (this.addPostForm.getError('required', ['userpost'])) {
-      errors.push('Usuario requerido');
+      errors.push('Nombre requerido');
     }
     if (this.addPostForm.getError('required', ['datepost'])) {
-      errors.push('Fecha requerido');
-    }
-    if (this.addPostForm.getError('required', ['contentpost'])) {
-      errors.push('Contenido requerido');
-    }
-    if (this.addPostForm.getError('minlength', ['contentpost'])) {
-      errors.push('El contenido debe ser mayor a 10 caracteres');
+      errors.push('URL requerido');
     }
     return errors;
   }
@@ -47,14 +37,11 @@ export class PostFormComponent implements OnInit {
 
   public handleSubmit() {
     const postdata: PostData = {
-      user: '',
-      date: new Date(),
-      content: '',
+      name: '',
+      url: '',
     };
-    postdata.user = this.addPostForm.get('userpost')!.value || '';
-    postdata.content = this.addPostForm.get('contentpost')!.value || '';
-    postdata.date = new Date(this.addPostForm.get('datepost')!.value || '');
-    console.log(postdata);
+    postdata.name = this.addPostForm.get('userpost')!.value || '';
+    postdata.url = this.addPostForm.get('datepost')!.value || '';
     // this.postsList.addPost(postdata);
   }
 

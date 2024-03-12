@@ -1,6 +1,5 @@
 <div class="postCard">
-  <h2>{{post.user}}</h2>
-  <span>{{post.date | date:"mm/dd/YYYY"}}</span>
-  <p>{{post.content}}</p>
-  <button class="btnShow" (click)="onClickShow()">VIEW {{isShowMore?"MORE":"LESS"}}</button>
+  <h2>{{ post.name }}</h2>
+  <span>{{ post.url }}</span>
+  <button class="btnShow" (click)="onDelete(post.name!!)">Delete</button>
 </div>

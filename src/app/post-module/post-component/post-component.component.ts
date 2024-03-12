@@ -1,5 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { PostData } from '../post-list/post-list.component';
+import { deletePost } from '../../state/posts.actions';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'post-component',
@@ -13,8 +15,12 @@ export class PostComponent {
 
   isShowMore: boolean;
 
-  constructor() {
+  constructor(public store: Store) {
     this.isShowMore = false;
+  }
+
+  onDelete(name: string) {
+    this.store.dispatch(deletePost({ name }));
   }
 
   onClickShow() {

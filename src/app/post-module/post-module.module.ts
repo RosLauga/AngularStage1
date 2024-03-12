@@ -43,15 +43,14 @@ export const postRoutes: Routes = [
     MatFormFieldModule,
     MatInputModule,
     MatDatepickerModule,
-
-    // StoreModule.forFeature(POSTS_STATE_KEY, postsReducer),
-    // EffectsModule.forFeature([PostsEffects]),
+    StoreModule.forFeature(POSTS_STATE_KEY, postsReducer),
+    EffectsModule.forFeature([PostsEffects]),
   ],
   exports: [PostComponent, PostListComponent, PostFormComponent],
   providers: [
     PostService,
     provideNativeDateAdapter(),
-    { provide: API_URL, useValue: 'https://pokeapi.co/api/v2/pokemon/ditto' },
+    { provide: API_URL, useValue: 'https://pokeapi.co/api/v2/pokemon/' },
   ],
 })
 export class PostModule {}

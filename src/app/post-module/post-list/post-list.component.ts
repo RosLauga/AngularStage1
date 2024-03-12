@@ -7,9 +7,8 @@ import { loadPosts } from '../../state/posts.actions';
 import { getPosts } from '../../state/posts.selectors';
 
 export interface PostData {
-  user?: string;
-  date?: Date;
-  content?: string;
+  name?: string;
+  url?: string;
 }
 @Component({
   selector: 'post-list',
@@ -22,5 +21,6 @@ export class PostListComponent {
   constructor(private store: Store) {
     this.store.dispatch(loadPosts());
     this.data$ = this.store.select(getPosts);
+    console.log('Data', this.data$);
   }
 }

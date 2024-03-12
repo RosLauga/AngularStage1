@@ -6,6 +6,10 @@ import { PostComponent } from '../post-module/post-component/post-component.comp
 
 export const API_URL = new InjectionToken<string>('API_URL');
 
+interface GetInfoAPI {
+  results: PostData[];
+}
+
 @Injectable()
 export class PostService {
   constructor(
@@ -14,7 +18,7 @@ export class PostService {
   ) {}
 
   public getAllPosts() {
-    return this.http.get(this.serviceUrl) as Observable<PostData[]>;
+    return this.http.get(this.serviceUrl) as Observable<GetInfoAPI>;
   }
 
   // public addPost(data: PostData) {

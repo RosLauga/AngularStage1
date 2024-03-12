@@ -22,7 +22,5 @@ export const appConfig: ApplicationConfig = {
       },
     ]),
     provideAnimations(),
-    provideStore(),
-    provideEffects(),
   ],
 };

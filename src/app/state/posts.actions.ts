@@ -7,3 +7,8 @@ export const loadPostsSuccessfully = createAction(
   '[Post Set-list] Set Post success',
   props<{ posts: PostData[] }>()
 );
+
+export const deletePost = createAction(
+  '[Post list] delete post successfully',
+  props<{ name: string }>()
+);

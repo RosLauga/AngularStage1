@@ -1,7 +1,5 @@
-<div>
-<ul>
-<li *ngFor="let post of data$ | async">
-<post-component [post]="post" ></post-component>
-</li>
-</ul>
+<div class="cardContainer">
+  <div *ngFor="let post of data$ | async">
+    <post-component [post]="post"></post-component>
+  </div>
 </div>

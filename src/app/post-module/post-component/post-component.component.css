@@ -8,13 +8,14 @@ h2 {
   padding: 0.5rem 1rem;
   box-shadow: 2px 2px 3px 2px rgba(0, 0, 0, 0.5);
   border-radius: 5%;
+  margin: 1rem;
 }
 
 .postCard p {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
 }
 
 .showMore {
