@@ -8,7 +8,10 @@ import { PostFormComponent } from './post-form/post-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
-import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { provideNativeDateAdapter } from '@angular/material/core';
 import { StoreModule } from '@ngrx/store';
 import { POSTS_STATE_KEY, postsReducer } from '../state/post.reducers';
 import { EffectsModule } from '@ngrx/effects';
@@ -37,13 +40,17 @@ export const postRoutes: Routes = [
     ReactiveFormsModule,
     RouterModule.forChild(postRoutes),
     MatButtonModule,
-    MatSlideToggleModule,
-    StoreModule.forFeature(POSTS_STATE_KEY, postsReducer),
-    EffectsModule.forFeature([PostsEffects]),
+    MatFormFieldModule,
+    MatInputModule,
+    MatDatepickerModule,
+
+    // StoreModule.forFeature(POSTS_STATE_KEY, postsReducer),
+    // EffectsModule.forFeature([PostsEffects]),
   ],
   exports: [PostComponent, PostListComponent, PostFormComponent],
   providers: [
     PostService,
+    provideNativeDateAdapter(),
     { provide: API_URL, useValue: 'https://pokeapi.co/api/v2/pokemon/ditto' },
   ],
 })

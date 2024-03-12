@@ -1,12 +1,34 @@
 <h3>Create a Post</h3>
 <form [formGroup]="addPostForm" (ngSubmit)="handleSubmit()">
-  <input type="text" required formControlName="userpost"/>
-
-  <input type="date" required formControlName="datepost"/>
-  <textarea type="text" required formControlName="contentpost"></textarea>
-<ng-container *ngFor="let errors of errorCheck$ | async">
-<li>{{errors}}</li></ng-container>
-<button mat-raised-button color='primary' type="submit" [disabled]="addPostForm.invalid">Submit</button>
+  <mat-form-field appearance="outline">
+    <mat-label>User</mat-label>
+    <input matInput type="text" required formControlName="userpost" />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Choose a date</mat-label>
+    <input matInput [matDatepicker]="picker" formControlName="datepost" />
+    <mat-hint>MM/DD/YYYY</mat-hint>
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Content</mat-label>
+    <textarea
+      matInput
+      type="text"
+      required
+      formControlName="contentpost"
+    ></textarea>
+  </mat-form-field>
+  <ng-container *ngFor="let errors of errorCheck$ | async">
+    <li>{{ errors }}</li></ng-container
+  >
+  <button
+    mat-raised-button
+    color="primary"
+    type="submit"
+    [disabled]="addPostForm.invalid"
+  >
+    Submit
+  </button>
 </form>
-<mat-slide-toggle>Toggle me!</mat-slide-toggle>
-
