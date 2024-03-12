@@ -12,3 +12,8 @@ export const deletePost = createAction(
   '[Post list] delete post successfully',
   props<{ name: string }>()
 );
+
+export const addPost = createAction(
+  '[Post list] add post successfully',
+  props<{ post: PostData }>()
+);

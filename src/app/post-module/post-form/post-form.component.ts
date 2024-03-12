@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { map } from 'rxjs';
-import { PostService } from '../../services/post.service';
 import { PostData } from '../post-list/post-list.component';
+import { Store } from '@ngrx/store';
+import { addPost } from '../../state/posts.actions';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'post-form',
@@ -10,7 +12,7 @@ import { PostData } from '../post-list/post-list.component';
   styleUrl: './post-form.component.css',
 })
 export class PostFormComponent implements OnInit {
-  constructor(private postsList: PostService) {}
+  constructor(public store: Store, private router: Router) {}
 
   public addPostForm = new FormGroup({
     userpost: new FormControl('', [Validators.required]),
@@ -42,7 +44,8 @@ export class PostFormComponent implements OnInit {
     };
     postdata.name = this.addPostForm.get('userpost')!.value || '';
     postdata.url = this.addPostForm.get('datepost')!.value || '';
-    // this.postsList.addPost(postdata);
+    this.store.dispatch(addPost({ post: postdata }));
+    this.router.navigate(['post/list']);
   }
 
   ngOnInit(): void {}

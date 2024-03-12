@@ -1,6 +1,6 @@
 import { Action, createReducer, on } from '@ngrx/store';
 import { PostData } from '../post-module/post-list/post-list.component';
-import { deletePost, loadPostsSuccessfully } from './posts.actions';
+import { addPost, deletePost, loadPostsSuccessfully } from './posts.actions';
 
 export interface PostDataState {
   posts: PostData[];
@@ -21,6 +21,10 @@ export const postsReducer: any = createReducer(
   on(deletePost, (state, { name }) => ({
     ...state,
     posts: state.posts.filter((poke: PostData) => poke.name !== name),
+  })),
+  on(addPost, (state, { post }) => ({
+    ...state,
+    posts: [...state.posts, post],
   }))
 );
 

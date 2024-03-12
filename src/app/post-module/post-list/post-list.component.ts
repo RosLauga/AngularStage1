@@ -1,7 +1,7 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { PostComponent } from '../post-component/post-component.component';
 import { PostService } from '../../services/post.service';
-import { Observable, of } from 'rxjs';
+import { Observable, map, of } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { loadPosts } from '../../state/posts.actions';
 import { getPosts } from '../../state/posts.selectors';
@@ -19,8 +19,17 @@ export class PostListComponent {
   public data$: Observable<PostData[]>;
 
   constructor(private store: Store) {
-    this.store.dispatch(loadPosts());
     this.data$ = this.store.select(getPosts);
-    console.log('Data', this.data$);
+  }
+
+  ngOnInit() {
+    console.log('Oninit', this.data$);
+    this.data$.subscribe((post) => {
+      if (post.length > 0) {
+        return;
+      } else {
+        this.store.dispatch(loadPosts());
+      }
+    });
   }
 }
