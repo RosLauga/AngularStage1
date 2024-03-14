@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { PostData } from '../post-module/post-list/post-list.component';
 import { PostComponent } from '../post-module/post-component/post-component.component';
+import { DetailsBody } from '../post-module/post-details/post-details.component.store';
 
 export const API_URL = new InjectionToken<string>('API_URL');
 
@@ -21,7 +22,7 @@ export class PostService {
     return this.http.get(this.serviceUrl) as Observable<GetInfoAPI>;
   }
 
-  // public addPost(data: PostData) {
-  //   this.postList.push(data);
-  // }
+  public getDetails(name: string) {
+    return this.http.get(this.serviceUrl + name) as Observable<DetailsBody>;
+  }
 }
