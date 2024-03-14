@@ -1,5 +1,6 @@
 <p>Details</p>
 <!-- <pre>{{ detail$ | async | json }}</pre> -->
+@if (!isExist) {
 <section class="details" *ngIf="detail$ | async as result">
   <div class="detailContainer">
     <h3>{{ pokeName | titlecase }}</h3>
@@ -11,3 +12,6 @@
     </ul>
   </div>
 </section>
+} @else {
+<h3>Pokemon no existe</h3>
+}

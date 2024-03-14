@@ -23,7 +23,7 @@ export class PostDetailsComponent {
   public detail$ = this.componentStore.details$;
 
   public pokeName: string = '';
-
+  public isExist: boolean = true;
   ngOnInit() {
     this.activatedRoute.queryParams
       .pipe(
