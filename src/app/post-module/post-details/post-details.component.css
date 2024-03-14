@@ -1,0 +1,26 @@
+.details {
+  justify-content: center;
+  display: flex;
+}
+
+.detailContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 15rem;
+  box-shadow: 2px 3px 3px 1px rgba(0, 0, 0, 0.4);
+  padding: 1rem;
+  border-radius: 10px 10px 20px 20px;
+}
+
+.detailContainer h3 {
+  text-align: center;
+  background-color: black;
+  color: white;
+  padding: 0.5rem 0;
+}
+
+.detailContainer img {
+  width: 10rem;
+  align-self: center;
+}

@@ -1,1 +1,13 @@
-<p>post-details works!</p>
+<p>Details</p>
+<!-- <pre>{{ detail$ | async | json }}</pre> -->
+<section class="details" *ngIf="detail$ | async as result">
+  <div class="detailContainer">
+    <h3>{{ pokeName | titlecase }}</h3>
+    <img src="{{ result.sprites.front_default }}" />
+    <span>Order: {{ result.order }}</span>
+    <span>Weight: {{ result.weight }}</span>
+    <ul>
+      <li *ngFor="let item of result.abilities">{{ item.ability.name }}</li>
+    </ul>
+  </div>
+</section>

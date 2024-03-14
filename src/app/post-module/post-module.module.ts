@@ -16,6 +16,7 @@ import { StoreModule } from '@ngrx/store';
 import { POSTS_STATE_KEY, postsReducer } from '../state/post.reducers';
 import { EffectsModule } from '@ngrx/effects';
 import { PostsEffects } from '../state/post.effects';
+import { PostDetailsComponent } from './post-details/post-details.component';
 export const postRoutes: Routes = [
   {
     path: '',
@@ -30,10 +31,23 @@ export const postRoutes: Routes = [
     path: 'list',
     component: PostListComponent,
   },
+  {
+    path: 'details',
+    component: PostDetailsComponent,
+  },
+  {
+    path: 'details/:name',
+    component: PostDetailsComponent,
+  },
 ];
 
 @NgModule({
-  declarations: [PostComponent, PostListComponent, PostFormComponent],
+  declarations: [
+    PostComponent,
+    PostListComponent,
+    PostFormComponent,
+    PostDetailsComponent,
+  ],
   imports: [
     CommonModule,
     HttpClientModule,
@@ -46,7 +60,12 @@ export const postRoutes: Routes = [
     StoreModule.forFeature(POSTS_STATE_KEY, postsReducer),
     EffectsModule.forFeature([PostsEffects]),
   ],
-  exports: [PostComponent, PostListComponent, PostFormComponent],
+  exports: [
+    PostComponent,
+    PostListComponent,
+    PostFormComponent,
+    PostDetailsComponent,
+  ],
   providers: [
     PostService,
     provideNativeDateAdapter(),

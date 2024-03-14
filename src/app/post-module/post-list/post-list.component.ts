@@ -23,7 +23,6 @@ export class PostListComponent {
   }
 
   ngOnInit() {
-    console.log('Oninit', this.data$);
     this.data$.subscribe((post) => {
       if (post.length > 0) {
         return;
